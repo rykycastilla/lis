@@ -1,7 +1,7 @@
 {
   "name": "lis",
   "version": "1.0.0",
-  "description": "LIS (Local Interface for Storage). A \"key-value\" frontend database based on indexedDB",
+  "description": "LIS (Local Interface for Storage). A \"key-value\" frontend database build on indexedDB",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc"

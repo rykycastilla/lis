@@ -1,4 +1,4 @@
-# lis
+# lis-db
 **LIS** (Local Interface for Storage), is a "key-value" frontend database build on *indexedDB* and with typescript support<sup>[1]<sup>.
 
 ## API
@@ -7,7 +7,7 @@ The library offers three functions (**write**, **read** and **erase**)
 ### write
 `write( key:string, value:any ): Promise<void>`<sup>[2]</sup> Can save persistent data with "key-value" structure, similar to `localStorage` API.
 ``` typescript
-import { write } from 'lis'
+import { write } from 'lis-db'
 
 write( 'hello', 'Hello World!' ).then( () => {
   console.log( 'Data Saved' )
@@ -17,7 +17,7 @@ write( 'hello', 'Hello World!' ).then( () => {
 ### read
 `read<T>( ...keys:string[] ): Promise<T[]>`<sup>[2]</sup> is used to read data from the database. It takes as many *keys* as you want and its promise is resolved with an `array` of the saved values. You can set the array elements *type* with the **generic type** *T*<sup>[3]</sup>
 ``` typescript
-import { read } from 'lis'
+import { read } from 'lis-db'
 
 read<string>( 'hello' ).then( values:string[] => {
   const [ hello ] = values  // Using Desestucturing (recommended)
@@ -26,7 +26,7 @@ read<string>( 'hello' ).then( values:string[] => {
 ```
 Also you can use **as** operator with a *tupla* to get values with a different *type*
 ``` typescript
-import { read, write } from 'lis'
+import { read, write } from 'lis-db'
 
 write( 'num', 7 ).then( () => {
   // Waiting for save data to read it
@@ -39,7 +39,7 @@ write( 'num', 7 ).then( () => {
 ```
 **Warning:** Undeclared values will be `null`
 ``` typescript
-import { read } from 'lis'
+import { read } from 'lis-db'
 
 // "x" was not written
 read( 'x' ).then( values => {
@@ -51,7 +51,7 @@ read( 'x' ).then( values => {
 ### erase
 `erase( key:string ): Promise<void>`<sup>[2]</sup> is used to erase data from the database
 ``` typescript
-import { erase, read } from 'lis'
+import { erase, read } from 'lis-db'
 
 read<string>( 'hello' ).then( values => {
   const [ hello ] = values
